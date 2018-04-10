@@ -574,7 +574,7 @@ class OpenStackCheck(AgentCheck):
         """
         try:
             resp = requests.get(url, headers=headers, verify=self._ssl_verify, params=params,
-                                timeout=DEFAULT_API_REQUEST_TIMEOUT, proxies=self.proxy_config)
+                                timeout=15, proxies=self.proxy_config)
             resp.raise_for_status()
         except requests.exceptions.HTTPError:
             if resp.status_code == 401:
